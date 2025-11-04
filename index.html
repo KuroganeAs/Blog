@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pentingnya Cross-Platform Deployment Menggunakan Docker</title>
-  <meta name="description" content="Artikel tentang cross-platform deployment menggunakan Docker untuk Reaction Time Test App." />
+  <title>Pengalaman Menggunakan Docker dalam Proyek Reaction Time Test App</title>
+  <meta name="description" content="Refleksi pengalaman menggunakan Docker untuk proyek Reaction Time Test App." />
   <style>
     :root{
       --bg:#f6f6f6;
       --panel:#ffffff;
-      --muted:#888;
+      --muted:#777;
       --text:#222;
       --radius:12px;
       font-family: Inter, system-ui, -apple-system, Roboto, sans-serif;
@@ -32,61 +32,36 @@
       padding:40px;
       box-shadow:0 4px 18px rgba(0,0,0,0.05);
     }
-    h1,h2,h3{color:#333;margin-top:1.5em}
+    h1,h2{color:#333;margin-top:1.5em}
     h1{font-size:26px;margin-top:0}
     p{margin:0.8em 0}
-    strong{color:#000}
+    ul,ol{margin-left:1.2em}
     footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px}
-    code{background:#f2f2f2;padding:2px 6px;border-radius:6px;font-family:ui-monospace, monospace}
-    pre{background:#fafafa;padding:12px;border-radius:8px;border:1px solid #eee;overflow:auto}
   </style>
 </head>
 <body>
   <main>
-    <h1>Pentingnya Cross-Platform Deployment Menggunakan Docker untuk Aplikasi Reaction Time Test</h1>
+    <h1>Pengalaman Menggunakan Docker dalam Proyek Reaction Time Test App</h1>
 
     <h2>Latar Belakang</h2>
-    <p>Dalam dunia pengembangan aplikasi modern, konsistensi lingkungan menjadi salah satu tantangan utama. Developer sering menemui masalah klasik: <em>“Aplikasi jalan di laptop saya, tapi error di server.”</em> Hal ini biasanya terjadi karena perbedaan sistem operasi, versi library, atau konfigurasi dependency.</p>
-    <p>Masalah ini semakin kompleks ketika aplikasi perlu dijalankan di berbagai platform — misalnya Windows untuk pengujian, macOS untuk pengembangan, dan Linux untuk server produksi. Untuk proyek sederhana seperti <strong>Reaction Time Test App</strong> (aplikasi yang mengukur waktu respon pengguna terhadap stimulus visual), perbedaan lingkungan bisa tetap menimbulkan bug kecil atau ketidaksesuaian hasil.</p>
-    <p><strong>Docker</strong> hadir sebagai solusi modern untuk menyatukan lingkungan pengembangan dan deployment di berbagai platform. Dengan Docker, aplikasi dikemas ke dalam kontainer yang berisi semua dependency-nya, sehingga bisa dijalankan di mana saja tanpa perlu konfigurasi ulang.</p>
+    <p>Selama mengerjakan proyek <strong>Reaction Time Test App</strong>, saya berusaha menciptakan aplikasi sederhana yang dapat mengukur waktu reaksi pengguna terhadap stimulus visual. Proyek ini saya bangun menggunakan <strong>HTML</strong> untuk antarmuka dan <strong>Node.js</strong> sebagai backend. Tujuan awalnya sederhana: membuat aplikasi yang ringan, interaktif, dan bisa dijalankan dengan mudah di berbagai sistem operasi. Namun, saya juga ingin belajar bagaimana membuat proses <em>deployment</em> menjadi lebih efisien dan profesional — hal yang kemudian membawa saya ke penggunaan <strong>Docker</strong>.</p>
 
-    <h2>Tujuan</h2>
-    <p>Tujuan utama penggunaan Docker pada proyek Reaction Time Test App adalah untuk:</p>
-    <ul>
-      <li>Menjamin konsistensi lintas platform.</li>
-      <li>Mempermudah deployment dan kolaborasi antar-developer.</li>
-      <li>Meningkatkan portabilitas ke berbagai sistem operasi.</li>
-      <li>Mempercepat iterasi dan debugging dengan lingkungan yang seragam.</li>
-    </ul>
-
-    <h2>Tahapan Utama</h2>
-    <p>Proses membuat Reaction Time Test App lintas platform dengan Docker dapat dibagi menjadi beberapa tahap:</p>
-    <ol>
-      <li><strong>Mempersiapkan Aplikasi</strong> — menggunakan framework apa pun, misalnya Node.js dengan HTML/JavaScript untuk antarmuka.</li>
-      <li><strong>Membuat Dockerfile</strong> — resep untuk membangun image Docker. Contoh:</li>
-    </ol>
-    <pre><code>FROM node:20-alpine
-WORKDIR /app
-COPY . .
-RUN npm install
-CMD ["node", "server.js"]
-EXPOSE 3000</code></pre>
-    <p>Dengan file ini, seluruh aplikasi bisa dijalankan hanya dengan:</p>
-    <pre><code>docker build -t reaction-time-app .
-docker run -p 3000:3000 reaction-time-app</code></pre>
-    <p><strong>Testing di berbagai platform</strong> dapat dilakukan setelah image dibuat, dan hasilnya akan tetap konsisten di sistem operasi mana pun. Setelah itu, image yang sudah stabil dapat diunggah ke Docker Hub untuk deployment di cloud.</p>
+    <h2>Pengalaman dan Tahapan Utama</h2>
+    <p>Awalnya, saya menulis aplikasi seperti biasa di lingkungan lokal. Semuanya berjalan lancar di mesin saya, tapi kemudian saya mulai memikirkan bagaimana jika aplikasi ini harus dijalankan di perangkat atau sistem operasi lain. Di sinilah saya mulai mempelajari Docker.</p>
+    <p>Langkah pertama adalah membuat <strong>Dockerfile</strong> yang mendefinisikan bagaimana aplikasi saya dibangun dan dijalankan. Karena ini pertama kalinya saya menggunakan Docker, bagian ini menjadi tantangan tersendiri. Saya butuh waktu cukup lama untuk memahami cara <strong>menghubungkan aplikasi Node.js ke dalam kontainer Docker</strong>, terutama dalam mengatur port dan memastikan dependency berjalan dengan benar.</p>
+    <p>Namun, setelah berhasil, saya langsung bisa melihat manfaat besar dari Docker. Aplikasi saya bisa dijalankan hanya dengan satu perintah tanpa perlu instalasi tambahan. Bahkan ketika saya mencoba di sistem lain, hasilnya tetap sama — tidak ada error aneh akibat perbedaan lingkungan.</p>
 
     <h2>Tantangan yang Dihadapi</h2>
-    <ul>
-      <li><strong>Ukuran image besar</strong> — dapat diatasi dengan base image ringan seperti <code>alpine</code>.</li>
-      <li><strong>Manajemen dependency</strong> — image perlu dibangun ulang saat library diperbarui.</li>
-      <li><strong>Kinerja</strong> — di Windows/macOS Docker berjalan di atas VM, bisa sedikit lebih lambat dari Linux.</li>
-      <li><strong>Keamanan</strong> — hindari menyimpan API key atau password dalam layer image.</li>
-    </ul>
+    <p>Tantangan utama saya tentu terletak pada tahap awal integrasi Docker. Saya perlu memahami bagaimana cara kerja layer dalam image, serta bagaimana mengatur <code>EXPOSE</code> port agar server Node.js bisa diakses dengan benar. Selain itu, saya juga harus memastikan semua dependency sudah tersalin ke dalam image, dan proses build tidak terlalu berat.</p>
+    <p>Saya sempat membandingkan performa antara menjalankan aplikasi langsung di sistem lokal dan melalui Docker. Hasilnya, Docker terasa sedikit lebih ringan dan terstruktur, meskipun pada proyek sekecil ini perbedaannya tidak begitu signifikan. Tapi saya bisa membayangkan betapa besar manfaatnya jika digunakan pada proyek yang kompleks.</p>
+
+    <h2>Pelajaran dan Manfaat</h2>
+    <p>Pengalaman pertama ini membuka pandangan baru bagi saya tentang bagaimana <em>containerization</em> bekerja. Docker tidak hanya membantu menjaga konsistensi lintas platform, tetapi juga menyederhanakan proses deployment. Saya mulai menyadari bahwa Docker sangat berguna untuk proyek besar, seperti <strong>signature forgery detection</strong> yang juga pernah saya kerjakan. Dalam proyek seperti itu, dependensi dan lingkungan kerja yang kompleks bisa dengan mudah dikelola menggunakan container.</p>
+    <p>Saya juga merasa debugging dan perbaikan kode menjadi lebih mudah karena Docker membuat lingkungan kerja lebih terkontrol dan mudah diatur ulang. Sekali saya menulis Dockerfile dengan benar, seluruh proses setup menjadi otomatis dan bebas repot.</p>
 
     <h2>Kesimpulan</h2>
-    <p>Cross-platform deployment bukan sekadar kemewahan teknis, tetapi kebutuhan penting bagi aplikasi modern — bahkan untuk proyek sederhana seperti Reaction Time Test. Dengan Docker, pengembang dapat menciptakan lingkungan yang konsisten, portabel, dan mudah diatur ulang, tanpa khawatir tentang perbedaan sistem operasi atau dependency.</p>
-    <p>Penerapan Docker tidak hanya menghemat waktu debugging, tapi juga membuka jalan menuju praktik pengembangan yang lebih profesional dan siap skala besar. Singkatnya, Docker menjembatani jarak antara ide sederhana dan deployment nyata lintas platform.</p>
+    <p>Secara keseluruhan, pengalaman menggunakan Docker dalam proyek Reaction Time Test ini memberikan pelajaran berharga. Meskipun di awal cukup menantang, hasil akhirnya sepadan. Saya menjadi lebih paham tentang konsep isolasi lingkungan dan pentingnya menjaga keseragaman antara pengembangan dan deployment.</p>
+    <p><strong>Docker membantu menjembatani perbedaan antar sistem operasi dan membuat aplikasi menjadi benar-benar lintas platform.</strong> Bagi saya, inilah poin pentingnya — bahwa <strong>cross-platform deployment</strong> bukan hanya soal kemudahan menjalankan aplikasi di mana saja, tapi juga tentang efisiensi, keandalan, dan profesionalitas dalam pengembangan perangkat lunak.</p>
 
     <footer>© <span id="year"></span> Kuro</footer>
   </main>
