@@ -3,140 +3,93 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Blog Minimal — Kuro</title>
-  <meta name="description" content="Blog minimal grayscale." />
+  <title>Pentingnya Cross-Platform Deployment Menggunakan Docker</title>
+  <meta name="description" content="Artikel tentang cross-platform deployment menggunakan Docker untuk Reaction Time Test App." />
   <style>
     :root{
       --bg:#f6f6f6;
       --panel:#ffffff;
-      --muted:#9a9a9a;
+      --muted:#888;
       --text:#222;
-      --accent:#4a4a4a;
       --radius:12px;
-      --container:900px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui, -apple-system, Roboto, sans-serif;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       background:var(--bg);
       color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-      padding:32px 16px;
+      line-height:1.7;
       display:flex;
-      align-items:flex-start;
       justify-content:center;
+      padding:40px 16px;
     }
-    .wrap{width:100%;max-width:var(--container)}
-    header{
-      display:flex;align-items:center;gap:16px;margin-bottom:20px
+    main{
+      background:var(--panel);
+      max-width:800px;
+      width:100%;
+      border-radius:var(--radius);
+      padding:40px;
+      box-shadow:0 4px 18px rgba(0,0,0,0.05);
     }
-    .brand{display:flex;flex-direction:column}
-    .title{font-weight:700;font-size:20px;letter-spacing:-0.2px}
-    .subtitle{font-size:13px;color:var(--muted)}
-
-    nav{margin-left:auto}
-    .nav{display:flex;gap:12px}
-    .nav button{
-      background:transparent;border:1px solid transparent;padding:8px 12px;border-radius:9px;font-size:14px;color:var(--accent);cursor:pointer
-    }
-    .nav button:hover{background:#efefef}
-    .active{background:#e9e9e9;border-color:#dedede}
-
-    main{background:var(--panel);border-radius:var(--radius);padding:28px;box-shadow:0 6px 18px rgba(30,30,30,0.04)}
-    .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    .hero{padding:18px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbfb);border:1px solid #f0f0f0}
-    h1{margin:0 0 8px 0;font-size:24px}
-    p.lead{margin:0;color:var(--muted)}
-
-    .card{padding:14px;border-radius:10px;border:1px solid #f0f0f0;background:#fff}
-    .muted{color:var(--muted);font-size:14px}
-
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
-
-    @media (min-width:720px){.grid{grid-template-columns:2fr 1fr}}
-
-    a{color:inherit;text-decoration:none}
-    code{background:#f4f4f4;padding:2px 6px;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace}
-    pre{background:#fafafa;padding:12px;border-radius:8px;border:1px solid #f0f0f0;overflow:auto}
+    h1,h2,h3{color:#333;margin-top:1.5em}
+    h1{font-size:26px;margin-top:0}
+    p{margin:0.8em 0}
+    strong{color:#000}
+    footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px}
+    code{background:#f2f2f2;padding:2px 6px;border-radius:6px;font-family:ui-monospace, monospace}
+    pre{background:#fafafa;padding:12px;border-radius:8px;border:1px solid #eee;overflow:auto}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="title">Blog Minimal — Kuro</div>
-        <div class="subtitle">Catatan & eksperimen — grayscale • simple</div>
-      </div>
-      <nav>
-        <div class="nav" role="navigation" aria-label="Navigasi">
-          <button class="active" data-target="home">Home</button>
-          <button data-target="about">About</button>
-          <button data-target="posts">Posts</button>
-        </div>
-      </nav>
-    </header>
+  <main>
+    <h1>Pentingnya Cross-Platform Deployment Menggunakan Docker untuk Aplikasi Reaction Time Test</h1>
 
-    <main>
-      <div class="grid">
-        <section id="home" class="hero" data-panel>
-          <h1>Selamat datang 👋</h1>
-          <p class="lead">Ini template HTML sederhana dengan styling minimal grayscale. Isi kontenmu di bagian <strong>Posts</strong> atau <strong>About</strong>.</p>
-        </section>
+    <h2>Latar Belakang</h2>
+    <p>Dalam dunia pengembangan aplikasi modern, konsistensi lingkungan menjadi salah satu tantangan utama. Developer sering menemui masalah klasik: <em>“Aplikasi jalan di laptop saya, tapi error di server.”</em> Hal ini biasanya terjadi karena perbedaan sistem operasi, versi library, atau konfigurasi dependency.</p>
+    <p>Masalah ini semakin kompleks ketika aplikasi perlu dijalankan di berbagai platform — misalnya Windows untuk pengujian, macOS untuk pengembangan, dan Linux untuk server produksi. Untuk proyek sederhana seperti <strong>Reaction Time Test App</strong> (aplikasi yang mengukur waktu respon pengguna terhadap stimulus visual), perbedaan lingkungan bisa tetap menimbulkan bug kecil atau ketidaksesuaian hasil.</p>
+    <p><strong>Docker</strong> hadir sebagai solusi modern untuk menyatukan lingkungan pengembangan dan deployment di berbagai platform. Dengan Docker, aplikasi dikemas ke dalam kontainer yang berisi semua dependency-nya, sehingga bisa dijalankan di mana saja tanpa perlu konfigurasi ulang.</p>
 
-        <aside style="min-width:200px">
-          <div class="card" style="margin-bottom:12px">
-            <strong>Info singkat</strong>
-            <p class="muted" style="margin-top:8px">Desain: Grayscale • Responsif • Single file</p>
-          </div>
+    <h2>Tujuan</h2>
+    <p>Tujuan utama penggunaan Docker pada proyek Reaction Time Test App adalah untuk:</p>
+    <ul>
+      <li>Menjamin konsistensi lintas platform.</li>
+      <li>Mempermudah deployment dan kolaborasi antar-developer.</li>
+      <li>Meningkatkan portabilitas ke berbagai sistem operasi.</li>
+      <li>Mempercepat iterasi dan debugging dengan lingkungan yang seragam.</li>
+    </ul>
 
-          <div class="card">
-            <strong>Kontak</strong>
-            <p class="muted" style="margin-top:8px">Email: your@email.com</p>
-          </div>
-        </aside>
+    <h2>Tahapan Utama</h2>
+    <p>Proses membuat Reaction Time Test App lintas platform dengan Docker dapat dibagi menjadi beberapa tahap:</p>
+    <ol>
+      <li><strong>Mempersiapkan Aplikasi</strong> — menggunakan framework apa pun, misalnya Node.js dengan HTML/JavaScript untuk antarmuka.</li>
+      <li><strong>Membuat Dockerfile</strong> — resep untuk membangun image Docker. Contoh:</li>
+    </ol>
+    <pre><code>FROM node:20-alpine
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "server.js"]
+EXPOSE 3000</code></pre>
+    <p>Dengan file ini, seluruh aplikasi bisa dijalankan hanya dengan:</p>
+    <pre><code>docker build -t reaction-time-app .
+docker run -p 3000:3000 reaction-time-app</code></pre>
+    <p><strong>Testing di berbagai platform</strong> dapat dilakukan setelah image dibuat, dan hasilnya akan tetap konsisten di sistem operasi mana pun. Setelah itu, image yang sudah stabil dapat diunggah ke Docker Hub untuk deployment di cloud.</p>
 
-        <section id="about" data-panel hidden class="card">
-          <h2>Tentang</h2>
-          <p class="muted">Tulis sedikit bio di sini. Kamu bisa ganti teks ini lewat editor.</p>
-        </section>
+    <h2>Tantangan yang Dihadapi</h2>
+    <ul>
+      <li><strong>Ukuran image besar</strong> — dapat diatasi dengan base image ringan seperti <code>alpine</code>.</li>
+      <li><strong>Manajemen dependency</strong> — image perlu dibangun ulang saat library diperbarui.</li>
+      <li><strong>Kinerja</strong> — di Windows/macOS Docker berjalan di atas VM, bisa sedikit lebih lambat dari Linux.</li>
+      <li><strong>Keamanan</strong> — hindari menyimpan API key atau password dalam layer image.</li>
+    </ul>
 
-        <section id="posts" data-panel hidden class="card">
-          <h2>Posts</h2>
-          <div id="posts-list">
-            <article style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed #eee">
-              <h3>Pentingnya Cross-Platform Deployment Menggunakan Docker untuk Aplikasi Reaction Time Test</h3>
-              <p class="muted">04 Nov 2025 · Teknologi</p>
-              <p><strong>Latar Belakang:</strong> Dalam dunia pengembangan aplikasi modern, konsistensi lingkungan menjadi salah satu tantangan utama. Perbedaan sistem operasi, versi library, atau konfigurasi dependency sering menyebabkan aplikasi gagal berjalan di tempat lain. Docker hadir sebagai solusi untuk membuat lingkungan pengembangan dan deployment yang konsisten di berbagai platform.</p>
-              <p><strong>Tujuan:</strong> Menggunakan Docker dalam proyek Reaction Time Test App bertujuan menjamin konsistensi lintas platform, mempermudah deployment, meningkatkan portabilitas, serta mempercepat proses pengujian dan debugging.</p>
-              <p><strong>Tahapan Utama:</strong> (1) Mempersiapkan aplikasi — misalnya Node.js + HTML/JS untuk antarmuka. (2) Membuat <code>Dockerfile</code> dengan base image <code>node:20-alpine</code> dan instruksi build sederhana. (3) Testing di berbagai OS menggunakan perintah <code>docker run</code>. (4) Deployment ke cloud melalui Docker Hub atau registry lain.</p>
-              <p><strong>Tantangan:</strong> Beberapa hambatan yang dihadapi antara lain ukuran image yang besar, manajemen dependency, performa di Windows/macOS, serta keamanan data dalam layer image.</p>
-              <p><strong>Kesimpulan:</strong> Cross-platform deployment dengan Docker bukan sekadar kemewahan teknis, melainkan kebutuhan penting. Dengan Docker, Reaction Time Test App dapat dijalankan konsisten di semua platform, mempercepat debugging, dan memudahkan kolaborasi. Docker menjembatani ide sederhana menjadi aplikasi nyata yang siap di-deploy lintas sistem.</p>
-            </article>
-          </div>
-        </section>
+    <h2>Kesimpulan</h2>
+    <p>Cross-platform deployment bukan sekadar kemewahan teknis, tetapi kebutuhan penting bagi aplikasi modern — bahkan untuk proyek sederhana seperti Reaction Time Test. Dengan Docker, pengembang dapat menciptakan lingkungan yang konsisten, portabel, dan mudah diatur ulang, tanpa khawatir tentang perbedaan sistem operasi atau dependency.</p>
+    <p>Penerapan Docker tidak hanya menghemat waktu debugging, tapi juga membuka jalan menuju praktik pengembangan yang lebih profesional dan siap skala besar. Singkatnya, Docker menjembatani jarak antara ide sederhana dan deployment nyata lintas platform.</p>
 
-      </div>
-
-      <footer>
-        © <span id="year"></span> Kuro — Built with a tiny HTML template
-      </footer>
-    </main>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const buttons = document.querySelectorAll('.nav button');
-    const panels = document.querySelectorAll('[data-panel]');
-    function showPanel(name){
-      panels.forEach(p => {p.hidden = p.id !== name;});
-      buttons.forEach(b => b.classList.toggle('active', b.dataset.target === name));
-    }
-    buttons.forEach(btn => btn.addEventListener('click', ()=> showPanel(btn.dataset.target)));
-    showPanel('home');
-  </script>
+    <footer>© <span id="year"></span> Kuro</footer>
+  </main>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
