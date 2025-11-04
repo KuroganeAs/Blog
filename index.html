@@ -41,7 +41,7 @@
 </head>
 <body>
   <main>
-    <h1>Blog Cloud Service</h1>
+    <h1>Cloud Service</h1>
 
     <h2>Latar Belakang</h2>
     <p>Selama mengerjakan App Reaction time, saya berusaha menciptakan aplikasi sederhana yang dapat mengukur waktu reaksi pengguna. Proyek ini saya bangun menggunakan HTML  dan Node.js. Tujuan awalnya untuk membuat aplikasi yang ringan, interaktif, dan bisa dijalankan dengan mudah di berbagai sistem operasi. Namun, saya juga ingin belajar bagaimana membuat proses deployment menjadi lebih efisien dan profesional.</p>
@@ -49,7 +49,7 @@
     <h2>Pengalaman dan Tahapan Utama</h2>
     <p>Awalnya, saya menulis aplikasi seperti biasa di lingkungan lokal. Semuanya berjalan lancar di mesin saya, tapi kemudian saya mulai memikirkan bagaimana jika aplikasi ini harus dijalankan di perangkat atau sistem operasi lain. Di sinilah saya mulai mempelajari Docker.</p>
     <p>Langkah pertama adalah membuat Dockerfile yang mendefinisikan bagaimana aplikasi saya dibangun dan dijalankan. Karena ini pertama kalinya saya menggunakan Docker, bagian ini menjadi tantangan tersendiri. Saya butuh waktu cukup lama untuk memahami cara menghubungkan aplikasi Node.js ke dalam kontainer Docker, terutama dalam mengatur port dan memastikan dependency berjalan dengan benar.</p>
-    <p>Namun, setelah berhasil, saya langsung bisa melihat manfaat besar dari Docker. Aplikasi saya bisa dijalankan hanya dengan satu perintah tanpa perlu instalasi tambahan. Bahkan ketika saya mencoba di sistem lain, hasilnya tetap sama — tidak ada error aneh akibat perbedaan lingkungan.</p>
+    <p>Namun, setelah berhasil, saya langsung bisa melihat manfaat besar dari Docker. Aplikasi saya bisa dijalankan hanya dengan satu perintah tanpa perlu instalasi tambahan. Bahkan ketika saya mencoba di sistem lain, hasilnya tetap sama tidak ada error aneh akibat perbedaan lingkungan.</p>
 
     <h2>Tantangan yang Dihadapi</h2>
     <p>Tantangan utama saya tentu terletak pada tahap awal integrasi Docker. Saya perlu memahami bagaimana cara kerja layer dalam image, serta bagaimana mengatur <code>EXPOSE</code> port agar server Node.js bisa diakses dengan benar. Selain itu, saya juga harus memastikan semua dependency sudah tersalin ke dalam image, dan proses build tidak terlalu berat.</p>
