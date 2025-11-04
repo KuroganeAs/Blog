@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pengalaman Menggunakan Docker dalam Proyek Reaction Time Test App</title>
+  <title>Blog Cloud Service</title>
   <meta name="description" content="Refleksi pengalaman menggunakan Docker untuk proyek Reaction Time Test App." />
   <style>
     :root{
@@ -41,14 +41,14 @@
 </head>
 <body>
   <main>
-    <h1>Pengalaman Menggunakan Docker dalam Proyek Reaction Time Test App</h1>
+    <h1>Blog Cloud Service</h1>
 
     <h2>Latar Belakang</h2>
-    <p>Selama mengerjakan proyek <strong>Reaction Time Test App</strong>, saya berusaha menciptakan aplikasi sederhana yang dapat mengukur waktu reaksi pengguna terhadap stimulus visual. Proyek ini saya bangun menggunakan <strong>HTML</strong> untuk antarmuka dan <strong>Node.js</strong> sebagai backend. Tujuan awalnya sederhana: membuat aplikasi yang ringan, interaktif, dan bisa dijalankan dengan mudah di berbagai sistem operasi. Namun, saya juga ingin belajar bagaimana membuat proses <em>deployment</em> menjadi lebih efisien dan profesional — hal yang kemudian membawa saya ke penggunaan <strong>Docker</strong>.</p>
+    <p>Selama mengerjakan App Reaction time, saya berusaha menciptakan aplikasi sederhana yang dapat mengukur waktu reaksi pengguna. Proyek ini saya bangun menggunakan HTML  dan Node.js. Tujuan awalnya untuk membuat aplikasi yang ringan, interaktif, dan bisa dijalankan dengan mudah di berbagai sistem operasi. Namun, saya juga ingin belajar bagaimana membuat proses deployment menjadi lebih efisien dan profesional.</p>
 
     <h2>Pengalaman dan Tahapan Utama</h2>
     <p>Awalnya, saya menulis aplikasi seperti biasa di lingkungan lokal. Semuanya berjalan lancar di mesin saya, tapi kemudian saya mulai memikirkan bagaimana jika aplikasi ini harus dijalankan di perangkat atau sistem operasi lain. Di sinilah saya mulai mempelajari Docker.</p>
-    <p>Langkah pertama adalah membuat <strong>Dockerfile</strong> yang mendefinisikan bagaimana aplikasi saya dibangun dan dijalankan. Karena ini pertama kalinya saya menggunakan Docker, bagian ini menjadi tantangan tersendiri. Saya butuh waktu cukup lama untuk memahami cara <strong>menghubungkan aplikasi Node.js ke dalam kontainer Docker</strong>, terutama dalam mengatur port dan memastikan dependency berjalan dengan benar.</p>
+    <p>Langkah pertama adalah membuat Dockerfile yang mendefinisikan bagaimana aplikasi saya dibangun dan dijalankan. Karena ini pertama kalinya saya menggunakan Docker, bagian ini menjadi tantangan tersendiri. Saya butuh waktu cukup lama untuk memahami cara menghubungkan aplikasi Node.js ke dalam kontainer Docker, terutama dalam mengatur port dan memastikan dependency berjalan dengan benar.</p>
     <p>Namun, setelah berhasil, saya langsung bisa melihat manfaat besar dari Docker. Aplikasi saya bisa dijalankan hanya dengan satu perintah tanpa perlu instalasi tambahan. Bahkan ketika saya mencoba di sistem lain, hasilnya tetap sama — tidak ada error aneh akibat perbedaan lingkungan.</p>
 
     <h2>Tantangan yang Dihadapi</h2>
@@ -56,14 +56,14 @@
     <p>Saya sempat membandingkan performa antara menjalankan aplikasi langsung di sistem lokal dan melalui Docker. Hasilnya, Docker terasa sedikit lebih ringan dan terstruktur, meskipun pada proyek sekecil ini perbedaannya tidak begitu signifikan. Tapi saya bisa membayangkan betapa besar manfaatnya jika digunakan pada proyek yang kompleks.</p>
 
     <h2>Pelajaran dan Manfaat</h2>
-    <p>Pengalaman pertama ini membuka pandangan baru bagi saya tentang bagaimana <em>containerization</em> bekerja. Docker tidak hanya membantu menjaga konsistensi lintas platform, tetapi juga menyederhanakan proses deployment. Saya mulai menyadari bahwa Docker sangat berguna untuk proyek besar, seperti <strong>signature forgery detection</strong> yang juga pernah saya kerjakan. Dalam proyek seperti itu, dependensi dan lingkungan kerja yang kompleks bisa dengan mudah dikelola menggunakan container.</p>
+    <p>Pengalaman pertama ini membuka pandangan baru bagi saya tentang bagaimana containerization bekerja. Docker tidak hanya membantu menjaga konsistensi lintas platform, tetapi juga menyederhanakan proses deployment. Saya mulai menyadari bahwa Docker sangat berguna untuk proyek besar, seperti signature forgery detection yang juga pernah saya kerjakan. Dalam proyek seperti itu, dependensi dan lingkungan kerja yang kompleks bisa dengan mudah dikelola menggunakan container.</p>
     <p>Saya juga merasa debugging dan perbaikan kode menjadi lebih mudah karena Docker membuat lingkungan kerja lebih terkontrol dan mudah diatur ulang. Sekali saya menulis Dockerfile dengan benar, seluruh proses setup menjadi otomatis dan bebas repot.</p>
 
     <h2>Kesimpulan</h2>
     <p>Secara keseluruhan, pengalaman menggunakan Docker dalam proyek Reaction Time Test ini memberikan pelajaran berharga. Meskipun di awal cukup menantang, hasil akhirnya sepadan. Saya menjadi lebih paham tentang konsep isolasi lingkungan dan pentingnya menjaga keseragaman antara pengembangan dan deployment.</p>
-    <p><strong>Docker membantu menjembatani perbedaan antar sistem operasi dan membuat aplikasi menjadi benar-benar lintas platform.</strong> Bagi saya, inilah poin pentingnya — bahwa <strong>cross-platform deployment</strong> bukan hanya soal kemudahan menjalankan aplikasi di mana saja, tapi juga tentang efisiensi, keandalan, dan profesionalitas dalam pengembangan perangkat lunak.</p>
+    <p>Docker membantu menjembatani perbedaan antar sistem operasi dan membuat aplikasi menjadi benar-benar lintas platform. Bagi saya, inilah poin pentingnya bahwa cross-platform deployment bukan hanya soal kemudahan menjalankan aplikasi di mana saja, tapi juga tentang efisiensi, keandalan, dan profesionalitas dalam pengembangan perangkat lunak.</p>
 
-    <footer>© <span id="year"></span> Kuro</footer>
+    <footer>©<span id="year"></span> Kevin</footer>
   </main>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
