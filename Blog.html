@@ -57,12 +57,8 @@
 
     footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 
-    /* Responsive */
-    @media (min-width:720px){
-      .grid{grid-template-columns:2fr 1fr}
-    }
+    @media (min-width:720px){.grid{grid-template-columns:2fr 1fr}}
 
-    /* Minimal utilities */
     a{color:inherit;text-decoration:none}
     code{background:#f4f4f4;padding:2px 6px;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace}
     pre{background:#fafafa;padding:12px;border-radius:8px;border:1px solid #f0f0f0;overflow:auto}
@@ -75,7 +71,6 @@
         <div class="title">Blog Minimal — Kuro</div>
         <div class="subtitle">Catatan & eksperimen — grayscale • simple</div>
       </div>
-
       <nav>
         <div class="nav" role="navigation" aria-label="Navigasi">
           <button class="active" data-target="home">Home</button>
@@ -90,15 +85,6 @@
         <section id="home" class="hero" data-panel>
           <h1>Selamat datang 👋</h1>
           <p class="lead">Ini template HTML sederhana dengan styling minimal grayscale. Isi kontenmu di bagian <strong>Posts</strong> atau <strong>About</strong>.</p>
-          <div style="height:10px"></div>
-          <div class="card">
-            <p class="muted">Petunjuk cepat:</p>
-            <ol style="margin:8px 0;padding-left:18px">
-              <li>Untuk membuat posting baru, tambahkan elemen &lt;article&gt; di bagian <code>#posts-list</code>.</li>
-              <li>Simpan file ini sebagai <code>index.html</code> di repo <code>your-username.github.io</code>.</li>
-              <li>Commit & push — GitHub Pages akan serve otomatis.</li>
-            </ol>
-          </div>
         </section>
 
         <aside style="min-width:200px">
@@ -121,11 +107,14 @@
         <section id="posts" data-panel hidden class="card">
           <h2>Posts</h2>
           <div id="posts-list">
-            <!-- Contoh artikel: copy & paste tambahkan sendiri -->
             <article style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed #eee">
-              <h3 style="margin:0">Contoh Postingan</h3>
-              <p class="muted" style="margin:6px 0 0">04 Nov 2025 · category</p>
-              <p style="margin-top:8px;color:var(--muted)">Ini contoh ringkasan posting. Ganti dengan konten tulisanmu.</p>
+              <h3>Pentingnya Cross-Platform Deployment Menggunakan Docker untuk Aplikasi Reaction Time Test</h3>
+              <p class="muted">04 Nov 2025 · Teknologi</p>
+              <p><strong>Latar Belakang:</strong> Dalam dunia pengembangan aplikasi modern, konsistensi lingkungan menjadi salah satu tantangan utama. Perbedaan sistem operasi, versi library, atau konfigurasi dependency sering menyebabkan aplikasi gagal berjalan di tempat lain. Docker hadir sebagai solusi untuk membuat lingkungan pengembangan dan deployment yang konsisten di berbagai platform.</p>
+              <p><strong>Tujuan:</strong> Menggunakan Docker dalam proyek Reaction Time Test App bertujuan menjamin konsistensi lintas platform, mempermudah deployment, meningkatkan portabilitas, serta mempercepat proses pengujian dan debugging.</p>
+              <p><strong>Tahapan Utama:</strong> (1) Mempersiapkan aplikasi — misalnya Node.js + HTML/JS untuk antarmuka. (2) Membuat <code>Dockerfile</code> dengan base image <code>node:20-alpine</code> dan instruksi build sederhana. (3) Testing di berbagai OS menggunakan perintah <code>docker run</code>. (4) Deployment ke cloud melalui Docker Hub atau registry lain.</p>
+              <p><strong>Tantangan:</strong> Beberapa hambatan yang dihadapi antara lain ukuran image yang besar, manajemen dependency, performa di Windows/macOS, serta keamanan data dalam layer image.</p>
+              <p><strong>Kesimpulan:</strong> Cross-platform deployment dengan Docker bukan sekadar kemewahan teknis, melainkan kebutuhan penting. Dengan Docker, Reaction Time Test App dapat dijalankan konsisten di semua platform, mempercepat debugging, dan memudahkan kolaborasi. Docker menjembatani ide sederhana menjadi aplikasi nyata yang siap di-deploy lintas sistem.</p>
             </article>
           </div>
         </section>
@@ -139,24 +128,14 @@
   </div>
 
   <script>
-    // Tahun otomatis
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple nav: show/hide sections
     const buttons = document.querySelectorAll('.nav button');
     const panels = document.querySelectorAll('[data-panel]');
-
     function showPanel(name){
-      panels.forEach(p => {
-        if(p.id === name){ p.hidden = false; }
-        else { p.hidden = true; }
-      });
+      panels.forEach(p => {p.hidden = p.id !== name;});
       buttons.forEach(b => b.classList.toggle('active', b.dataset.target === name));
     }
-
     buttons.forEach(btn => btn.addEventListener('click', ()=> showPanel(btn.dataset.target)));
-
-    // default
     showPanel('home');
   </script>
 </body>
